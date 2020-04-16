@@ -1,0 +1,4 @@
+node_modules
+
+tmp/imagens/*
+!tmp/imagens/.gitkeep
