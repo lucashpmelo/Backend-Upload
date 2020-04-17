@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const path = require('path');
+const cors = require('cors');
 
 const config = require('./config');
 
@@ -21,6 +22,7 @@ const Post = require('./models/post');
 //Rotas
 const postRoute = require('./routes/post-route');
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/files", express.static(path.resolve(__dirname,"..", "tmp", "imagens")));

@@ -14,7 +14,6 @@ exports.get = async (req, res) => {
 };
 
 exports.post = async (req, res) => {
-    console.log('Aqui');
     try {
         const post = await repository.create({
             name: req.file.originalname,
