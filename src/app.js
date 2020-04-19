@@ -14,6 +14,7 @@ const app = express();
 //Banco
 mongoose.connect(config.connectionString, {
     useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
 //Models
