@@ -13,15 +13,14 @@ const schema = new Schema({
     name: {
         type: String,
     },
-    size: {
-        type: Number,
-    },
-    key: {
+    result: {
         type: String,
     },
-    url: {
+    filetype: {
         type: String,
-        default: '',
+    },
+    src: {
+        type: String,
     },
     createdAt: {
         type: Date,
@@ -29,14 +28,14 @@ const schema = new Schema({
     },
 });
 
-schema.pre('save', function () {
-    if (!this.url) {
-        this.url = `${config.HTTP}files/${this.key}`;
-    }
-});
+// schema.pre('save', function () {
+//     if (!this.url) {
+//         this.url = `${config.HTTP}files/${this.key}`;
+//     }
+// });
 
-schema.pre('remove', function () {
-    return promisify(fs.unlink)(path.resolve(__dirname, "..", "..", "tmp", "imagens", this.key));
-});
+// schema.pre('remove', function () {
+//     return promisify(fs.unlink)(path.resolve(__dirname, "..", "..", "tmp", "imagens", this.key));
+// });
 
 module.exports = mongoose.model('Post', schema);

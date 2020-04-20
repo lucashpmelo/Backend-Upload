@@ -13,6 +13,17 @@ exports.create = async (data) => {
     return await post.save();
 }
 
+exports.update = async (data) => {
+    
+    await Post.findByIdAndUpdate(id, {
+        $set: {
+            data
+        }
+    });
+
+    return res;
+}
+
 exports.delete = async (id) => {
     const posts = await Post.findById(id);
 

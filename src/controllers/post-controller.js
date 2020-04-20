@@ -13,16 +13,45 @@ exports.get = async (req, res) => {
     }
 };
 
+// exports.post = async (req, res) => {
+//     try {
+//         const post = await repository.create({
+//             name: req.file.originalname,
+//             size: req.file.size,
+//             key: req.file.filename,
+//             url: '',
+//         });
+
+//         res.status(201).send(post);
+//     } catch (e) {
+//         res.status(500).send({
+//             message: 'Falha ao processar sua requisição'
+//         });
+//     }
+// };
+
 exports.post = async (req, res) => {
     try {
         const post = await repository.create({
-            name: req.file.originalname,
-            size: req.file.size,
-            key: req.file.filename,
-            url: '',
+            name: req.body.name,
+            result: req.body.result,            
+            filetype: req.body.filetype,
+            src: req.body.src
         });
 
         res.status(201).send(post);
+    } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição'
+        });
+    }
+};
+
+exports.put = async (req, res) => {
+    try {
+        const post = await repository.update(req);
+
+        res.status(200).send(post);
     } catch (e) {
         res.status(500).send({
             message: 'Falha ao processar sua requisição'

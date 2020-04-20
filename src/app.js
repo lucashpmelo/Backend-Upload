@@ -24,9 +24,9 @@ const Post = require('./models/post');
 const postRoute = require('./routes/post-route');
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/files", express.static(path.resolve(__dirname,"..", "tmp", "imagens")));
+app.use(bodyParser.json({limit: '50mb', extended: true}));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use("/files", express.static(path.resolve(__dirname, "..", "tmp", "imagens")));
 
 //Usado para Log
 app.use(morgan('dev'));
