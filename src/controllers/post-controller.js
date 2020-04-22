@@ -2,6 +2,8 @@
 
 const repository = require('../repositories/post-repository');
 
+const fs = require('fs');
+
 exports.get = async (req, res) => {
     try {
         const data = await repository.get();
@@ -32,9 +34,19 @@ exports.get = async (req, res) => {
 
 exports.post = async (req, res) => {
     try {
+        const resultado = req.body.result.split(/\s*,\s*/);
+
+        fs.writeFile('teste.jpeg', resultado[1], { encoding: 'base64' }, function (err) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('file criado');
+            }
+        });
+
         const post = await repository.create({
             name: req.body.name,
-            result: req.body.result,            
+            result: req.body.result,
             filetype: req.body.filetype,
             src: req.body.src
         });
