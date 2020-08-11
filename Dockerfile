@@ -1,6 +1,6 @@
-FROM node:latest
+FROM node:alpine
 
-WORKDIR /usr/src/app
+WORKDIR /usr/app
 
 COPY . .
 
